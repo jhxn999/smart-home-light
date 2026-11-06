@@ -1,0 +1,3 @@
+# Keep local Wi-Fi credentials out of the GitHub repository.
+outputs/NovaLightESP32/firmware/NovaLight/secrets.h
+

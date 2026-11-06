@@ -1,0 +1,482 @@
+// Generated from ../dashboard.html by tools/embed_dashboard.py. Do not edit by hand.
+#pragma once
+#include <pgmspace.h>
+
+static const char NOVALIGHT_HTML[] PROGMEM = R"NOVALIGHT_HTML(
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#eef3fb">
+  <title>Nova Light</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #162234;
+      --muted: #6f7c8f;
+      --soft: #98a3b2;
+      --line: rgba(63, 84, 117, .11);
+      --glass: rgba(255, 255, 255, .72);
+      --glass-strong: rgba(255, 255, 255, .88);
+      --wash: rgba(255, 255, 255, .48);
+      --blue: #477df5;
+      --blue-deep: #2863ec;
+      --mint: #20ad8a;
+      --amber: #f0ae53;
+      --shadow: 0 24px 70px rgba(66, 85, 121, .13), 0 2px 8px rgba(66, 85, 121, .05);
+      --shadow-small: 0 10px 30px rgba(68, 87, 120, .09);
+      --radius-xl: 32px;
+      --radius-lg: 25px;
+      --radius-md: 19px;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 2%, rgba(164, 202, 255, .55), transparent 37rem),
+        radial-gradient(ellipse at 94% 18%, rgba(236, 211, 255, .46), transparent 31rem),
+        linear-gradient(150deg, #edf3fc 0%, #f7f8fc 46%, #eef3f9 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, sans-serif;
+      letter-spacing: -.018em;
+      transition: color .35s ease, background .45s ease;
+    }
+    body::before {
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      opacity: .24;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.13'/%3E%3C/svg%3E");
+    }
+    body[data-theme="dark"] {
+      color-scheme: dark;
+      --ink: #edf3ff;
+      --muted: #a5b1c5;
+      --soft: #7f8ca2;
+      --line: rgba(205, 220, 255, .12);
+      --glass: rgba(31, 42, 61, .67);
+      --glass-strong: rgba(35, 48, 69, .86);
+      --wash: rgba(255, 255, 255, .045);
+      --blue: #7ba4ff;
+      --blue-deep: #4f7ff6;
+      --mint: #46d1af;
+      --amber: #f4bc68;
+      --shadow: 0 28px 75px rgba(0, 0, 0, .28), 0 2px 10px rgba(0, 0, 0, .16);
+      --shadow-small: 0 12px 32px rgba(0, 0, 0, .20);
+      background:
+        radial-gradient(ellipse at 9% 1%, rgba(41, 80, 149, .5), transparent 37rem),
+        radial-gradient(ellipse at 95% 15%, rgba(91, 57, 135, .29), transparent 31rem),
+        linear-gradient(145deg, #101827, #171d2b 56%, #111a27);
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    .shell { width: min(1320px, calc(100% - 64px)); margin: 0 auto; padding: 28px 0 54px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 31px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark {
+      display: grid; width: 43px; height: 43px; place-items: center; flex: 0 0 auto;
+      color: white; border: 1px solid rgba(255,255,255,.5); border-radius: 15px;
+      background: linear-gradient(145deg, #8bb4ff, #4c7ff5 58%, #3e6de0);
+      box-shadow: 0 9px 22px rgba(67, 117, 236, .28), inset 0 1px rgba(255,255,255,.58);
+    }
+    .brand-mark svg { width: 23px; height: 23px; }
+    .brand-name { font-weight: 740; font-size: 16px; line-height: 1.05; letter-spacing: -.04em; }
+    .brand-caption { margin-top: 5px; color: var(--muted); font-size: 11px; letter-spacing: .04em; }
+    .top-actions { display: flex; align-items: center; gap: 10px; }
+    .device-pill, .icon-button, .glass-card, .top-chip {
+      border: 1px solid var(--line); background: var(--glass); backdrop-filter: blur(24px) saturate(150%); -webkit-backdrop-filter: blur(24px) saturate(150%);
+    }
+    .device-pill { display: flex; align-items: center; gap: 9px; padding: 10px 14px; border-radius: 999px; color: var(--muted); font-size: 12px; }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #abb4c2; box-shadow: 0 0 0 4px rgba(154,166,184,.12); transition: all .25s; }
+    .live-dot.online { background: #30bd94; box-shadow: 0 0 0 4px rgba(48,189,148,.12), 0 0 14px rgba(48,189,148,.65); }
+    .icon-button { display: grid; width: 41px; height: 41px; place-items: center; border-radius: 14px; cursor: pointer; transition: transform .2s, background .2s; }
+    .icon-button:hover { transform: translateY(-2px); background: var(--glass-strong); }
+    .icon-button svg { width: 18px; height: 18px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; font-weight: 650; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow svg { width: 14px; height: 14px; color: var(--blue); }
+    .intro { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin: 0 0 22px; }
+    h1 { margin: 8px 0 0; font-size: clamp(30px, 3.7vw, 47px); font-weight: 680; letter-spacing: -.065em; line-height: 1.02; }
+    .intro-note { max-width: 280px; padding-bottom: 2px; color: var(--muted); font-size: 13px; line-height: 1.55; text-align: right; }
+    .dashboard { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(330px, .86fr); gap: 19px; align-items: start; }
+    .primary-column, .side-column { display: grid; gap: 19px; min-width: 0; }
+    .glass-card { overflow: hidden; border-radius: var(--radius-xl); box-shadow: var(--shadow); transition: border-color .25s, transform .25s; }
+    .hero-card { position: relative; display: flex; min-height: 366px; align-items: center; justify-content: space-between; gap: 15px; padding: 34px 38px; background: linear-gradient(125deg, rgba(255,255,255,.84), rgba(255,255,255,.55) 55%, rgba(220,232,255,.48)); }
+    body[data-theme="dark"] .hero-card { background: linear-gradient(125deg, rgba(49,66,94,.88), rgba(33,47,70,.72) 55%, rgba(39,55,84,.66)); }
+    .hero-card::before { position: absolute; top: -110px; right: 14%; width: 390px; height: 390px; content: ""; border-radius: 50%; background: radial-gradient(circle, rgba(129,171,255,.18), transparent 68%); pointer-events: none; }
+    .hero-copy { position: relative; z-index: 1; max-width: 350px; }
+    .hero-copy h2 { margin: 17px 0 11px; font-size: clamp(27px, 3vw, 37px); letter-spacing: -.06em; line-height: 1.08; font-weight: 660; }
+    .hero-copy p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .state-caption { display: inline-flex; align-items: center; gap: 8px; margin-top: 25px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--wash); color: var(--muted); font-size: 12px; }
+    .state-caption strong { color: var(--ink); font-weight: 680; }
+    .state-mini { width: 7px; height: 7px; border-radius: 50%; background: #adb7c6; }
+    .state-mini.on { background: #ffc568; box-shadow: 0 0 11px rgba(255,185,84,.8); }
+    .control-wrap { position: relative; z-index: 1; display: grid; width: 218px; height: 218px; flex: 0 0 auto; place-items: center; margin-right: 6px; }
+    .control-halo { position: absolute; width: 100%; height: 100%; border: 1px solid rgba(97,137,219,.14); border-radius: 50%; box-shadow: inset 0 0 35px rgba(125,163,231,.05); transition: all .45s; }
+    .control-halo::before, .control-halo::after { position: absolute; content: ""; inset: 13px; border: 1px solid rgba(97,137,219,.11); border-radius: 50%; }
+    .control-halo::after { inset: 29px; border-color: rgba(97,137,219,.08); }
+    .light-on .control-halo { border-color: rgba(244,179,87,.5); box-shadow: 0 0 48px rgba(255,191,106,.12), inset 0 0 38px rgba(255,191,106,.1); }
+    .power-button { position: relative; display: grid; width: 124px; height: 124px; place-items: center; border: 1px solid rgba(255,255,255,.72); border-radius: 50%; background: linear-gradient(150deg,#fff,#edf3ff 72%); color: #77849a; box-shadow: 0 19px 37px rgba(48,75,124,.2), inset 0 2px 3px rgba(255,255,255,.96); cursor: pointer; transition: all .35s cubic-bezier(.2,.8,.2,1); }
+    body[data-theme="dark"] .power-button { border-color: rgba(222,233,255,.24); background: linear-gradient(150deg,#52627f,#303e57 72%); color: #b2bfd5; box-shadow: 0 18px 38px rgba(0,0,0,.34), inset 0 2px 2px rgba(255,255,255,.13); }
+    .power-button:hover { transform: scale(1.045); }
+    .power-button:active { transform: scale(.97); }
+    .power-button svg { width: 41px; height: 41px; stroke-width: 1.8; }
+    .light-on .power-button { color: white; border-color: rgba(255,255,255,.8); background: linear-gradient(145deg,#ffd88d,#f4ad4f 57%,#ec9443); box-shadow: 0 18px 46px rgba(239,160,63,.36), inset 0 2px 3px rgba(255,255,255,.68); }
+    .power-label { position: absolute; bottom: -34px; color: var(--muted); font-size: 11px; font-weight: 650; letter-spacing: .14em; text-transform: uppercase; }
+    .metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+    .metric-card { padding: 19px 20px 18px; border-radius: var(--radius-lg); box-shadow: var(--shadow-small); background: var(--glass); }
+    .metric-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 11px; font-weight: 620; }
+    .metric-icon { display: grid; width: 29px; height: 29px; place-items: center; color: var(--blue); border-radius: 10px; background: rgba(92,139,246,.11); }
+    .metric-icon svg { width: 15px; height: 15px; }
+    .metric-value { margin-top: 13px; font-size: clamp(17px, 1.8vw, 23px); font-weight: 690; letter-spacing: -.045em; }
+    .metric-sub { margin-top: 5px; color: var(--soft); font-size: 11px; }
+    .card-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 23px 24px 15px; }
+    .card-title { margin: 0; font-size: 16px; font-weight: 680; letter-spacing: -.035em; }
+    .card-subtitle { margin-top: 5px; color: var(--muted); font-size: 11px; }
+    .schedule-card { background: var(--glass); }
+    .schedule-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .schedule-toggle { position: relative; width: 49px; height: 29px; flex: 0 0 auto; padding: 0; border: 1px solid rgba(37,53,76,.1); border-radius: 999px; background: rgba(140,151,168,.27); cursor: pointer; transition: background .25s; }
+    .schedule-toggle::after { position: absolute; top: 3px; left: 3px; width: 21px; height: 21px; content: ""; border-radius: 50%; background: white; box-shadow: 0 2px 6px rgba(0,0,0,.2); transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+    .schedule-toggle[aria-checked="true"] { background: #4b83f6; }
+    .schedule-toggle[aria-checked="true"]::after { transform: translateX(20px); }
+    .schedule-toggle:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid rgba(77,130,246,.4); outline-offset: 3px; }
+    .time-list { display: grid; gap: 10px; padding: 7px 24px 19px; }
+    .time-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 13px 14px; border: 1px solid var(--line); border-radius: 17px; background: var(--wash); }
+    .time-label { display: flex; align-items: center; gap: 11px; min-width: 0; }
+    .time-glyph { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border-radius: 12px; color: var(--blue); background: rgba(84,133,241,.11); }
+    .time-row.off .time-glyph { color: #df9a45; background: rgba(242,172,75,.13); }
+    .time-glyph svg { width: 16px; height: 16px; }
+    .time-name { font-size: 12px; font-weight: 640; }
+    .time-caption { margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .time-input { width: 105px; padding: 8px 7px; border: 1px solid transparent; border-radius: 10px; background: transparent; color: var(--ink); font-size: 13px; font-weight: 650; text-align: right; cursor: pointer; }
+    .time-input:hover { border-color: var(--line); background: var(--glass); }
+    .schedule-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 0 24px 21px; }
+    .schedule-note { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+    .schedule-note svg { width: 14px; height: 14px; flex: 0 0 auto; }
+    .save-button { padding: 9px 13px; border: 0; border-radius: 12px; background: linear-gradient(145deg,#6293ff,#4778ee); color: white; font-size: 11px; font-weight: 680; box-shadow: 0 6px 15px rgba(65,117,233,.2); cursor: pointer; transition: transform .2s, filter .2s; }
+    .save-button:hover { transform: translateY(-1px); filter: brightness(1.05); }
+    .schedule-off .time-list, .schedule-off .schedule-foot { opacity: .48; }
+    .schedule-off .time-input, .schedule-off .save-button { pointer-events: auto; }
+    .history-card { background: var(--glass); }
+    .history-title-wrap { display: flex; align-items: center; gap: 10px; }
+    .history-icon { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 12px; color: var(--blue); background: rgba(84,133,241,.11); }
+    .history-icon svg { width: 17px; height: 17px; }
+    .history-list { display: grid; gap: 0; padding: 2px 24px 12px; }
+    .history-item { display: grid; grid-template-columns: 30px minmax(0,1fr) auto; align-items: center; gap: 10px; min-height: 53px; border-top: 1px solid var(--line); }
+    .history-mark { display: grid; width: 27px; height: 27px; place-items: center; border-radius: 9px; color: var(--mint); background: rgba(45,184,146,.11); }
+    .history-mark.off { color: #d39449; background: rgba(230,165,78,.13); }
+    .history-mark svg { width: 13px; height: 13px; }
+    .history-action { overflow: hidden; font-size: 11px; font-weight: 630; text-overflow: ellipsis; white-space: nowrap; }
+    .history-time { color: var(--muted); font-size: 10px; text-align: right; white-space: nowrap; }
+    .empty-history { padding: 13px 0 15px; color: var(--muted); font-size: 12px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 14px; margin-top: 20px; color: var(--soft); font-size: 10px; }
+    .footer-row span:last-child { text-align: right; }
+    .toast { position: fixed; z-index: 10; right: 24px; bottom: 24px; max-width: min(360px, calc(100% - 32px)); padding: 13px 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--glass-strong); box-shadow: var(--shadow-small); color: var(--ink); font-size: 12px; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .25s, transform .25s; backdrop-filter: blur(24px); }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    @media (max-width: 940px) {
+      .shell { width: min(760px, calc(100% - 40px)); padding-top: 22px; }
+      .dashboard { grid-template-columns: 1fr; }
+      .side-column { grid-template-columns: 1fr 1fr; align-items: start; }
+      .history-card { min-height: 100%; }
+    }
+    @media (max-width: 620px) {
+      .shell { width: calc(100% - 28px); padding: 15px 0 28px; }
+      .topbar { margin-bottom: 28px; }
+      .brand-mark { width: 39px; height: 39px; border-radius: 14px; }
+      .device-pill { padding: 9px 11px; font-size: 10px; }
+      .device-pill .device-label { display: none; }
+      .intro { display: block; margin-bottom: 18px; }
+      h1 { font-size: 35px; }
+      .intro-note { max-width: 100%; margin-top: 9px; text-align: left; font-size: 12px; }
+      .dashboard, .primary-column, .side-column { gap: 13px; }
+      .side-column { grid-template-columns: 1fr; }
+      .glass-card { border-radius: 25px; }
+      .hero-card { min-height: 0; flex-direction: column; align-items: stretch; padding: 24px 23px 25px; }
+      .hero-copy h2 { margin-top: 13px; font-size: 29px; }
+      .hero-copy p { font-size: 12px; }
+      .state-caption { margin-top: 16px; }
+      .control-wrap { width: 174px; height: 174px; align-self: center; margin: 9px 0 4px; }
+      .power-button { width: 102px; height: 102px; }
+      .power-button svg { width: 34px; height: 34px; }
+      .metric-row { gap: 8px; }
+      .metric-card { padding: 14px 12px; border-radius: 19px; }
+      .metric-top { align-items: flex-start; font-size: 9px; }
+      .metric-icon { width: 25px; height: 25px; border-radius: 9px; }
+      .metric-icon svg { width: 13px; height: 13px; }
+      .metric-value { margin-top: 10px; font-size: 17px; }
+      .metric-sub { font-size: 9px; }
+      .card-heading { padding: 20px 19px 13px; }
+      .time-list { padding: 6px 17px 16px; }
+      .schedule-foot { align-items: flex-start; padding: 0 19px 19px; }
+      .schedule-note { max-width: 185px; }
+      .history-list { padding: 1px 18px 9px; }
+      .history-time { font-size: 9px; }
+      .footer-row { display: block; line-height: 1.6; }
+      .footer-row span { display: block; }
+      .footer-row span:last-child { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M8.2 14.5a6.5 6.5 0 1 1 7.6 0c-.8.6-1.3 1.2-1.5 2H9.7c-.2-.8-.7-1.4-1.5-2Z"/><path d="M12 2v1.5M4.9 4.9 6 6M2 12h1.5M20.5 12H22M18 6l1.1-1.1"/></svg>
+        </div>
+        <div><div class="brand-name">Nova Light</div><div class="brand-caption">SMART HOME CONTROL</div></div>
+      </div>
+      <div class="top-actions">
+        <div class="device-pill"><span id="connectionDot" class="live-dot"></span><span class="device-label">ESP32</span><span id="connectionText">Connecting</span></div>
+        <button id="themeButton" class="icon-button" type="button" aria-label="Toggle color theme" title="Toggle light and dark appearance">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="intro">
+      <div><div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M4.93 4.93l2.12 2.12m9.9 9.9 2.12 2.12M3 12h3m12 0h3M4.93 19.07l2.12-2.12m9.9-9.9 2.12-2.12"/><circle cx="12" cy="12" r="4"/></svg> YOUR SPACE, IN A BETTER LIGHT</div><h1>Light, at your pace.</h1></div>
+      <div class="intro-note">A quieter way to stay in control, wherever your day takes you.</div>
+    </div>
+
+    <main class="dashboard">
+      <section class="primary-column" aria-label="Light controls">
+        <article id="heroCard" class="glass-card hero-card">
+          <div class="hero-copy">
+            <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M8.2 14.5a6.5 6.5 0 1 1 7.6 0c-.8.6-1.3 1.2-1.5 2H9.7c-.2-.8-.7-1.4-1.5-2Z"/></svg> LIVING ROOM</div>
+            <h2 id="heroTitle">A little more glow.</h2>
+            <p id="heroDescription">Your light is ready when you are. Tap the control to change its state.</p>
+            <div class="state-caption"><span id="relayStateDot" class="state-mini"></span> Relay <strong id="relayState">OFF</strong></div>
+          </div>
+          <div id="controlWrap" class="control-wrap">
+            <div class="control-halo"></div>
+            <button id="powerButton" class="power-button" type="button" aria-label="Turn light on" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"><path d="M12 2v10"/><path d="M6.2 5.8a8 8 0 1 0 11.6 0"/></svg>
+            </button>
+            <div id="powerLabel" class="power-label">Tap to turn on</div>
+          </div>
+        </article>
+
+        <section class="metric-row" aria-label="Live device information">
+          <article class="glass-card metric-card">
+            <div class="metric-top"><span>Local time</span><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span></div>
+            <div id="clockValue" class="metric-value">--:-- --</div><div id="dateValue" class="metric-sub">Waiting for device clock</div>
+          </article>
+          <article class="glass-card metric-card">
+            <div class="metric-top"><span>Today’s usage</span><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2m7 7h2M3 12h2m12-5 1.5-1.5M5.5 18.5 7 17m10 0 1.5 1.5M7 7 5.5 5.5"/><circle cx="12" cy="12" r="5"/></svg></span></div>
+            <div id="usageValue" class="metric-value">0 min</div><div class="metric-sub">Light on time · IST</div>
+          </article>
+          <article class="glass-card metric-card">
+            <div class="metric-top"><span>Wi-Fi signal</span><span class="metric-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9.5a11 11 0 0 1 14 0M8 12.5a6.5 6.5 0 0 1 8 0m-5 5h.01"/><circle cx="12" cy="17.5" r=".7"/></svg></span></div>
+            <div id="wifiValue" class="metric-value">— dBm</div><div id="wifiSub" class="metric-sub">Waiting for device</div>
+          </article>
+        </section>
+      </section>
+
+      <aside class="side-column">
+        <section id="scheduleCard" class="glass-card schedule-card">
+          <div class="card-heading">
+            <div class="schedule-head"><div><h2 class="card-title">Daily schedule</h2><div class="card-subtitle">A gentle routine, on autopilot</div></div></div>
+            <button id="scheduleToggle" class="schedule-toggle" type="button" role="switch" aria-checked="false" aria-label="Enable automatic schedule"></button>
+          </div>
+          <div class="time-list">
+            <label class="time-row">
+              <span class="time-label"><span class="time-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><span class="time-name">Switch on</span><span id="onCaption" class="time-caption">6:40 PM</span></span></span>
+              <input id="onTime" class="time-input" type="time" value="18:40" aria-label="Switch on time">
+            </label>
+            <label class="time-row off">
+              <span class="time-label"><span class="time-glyph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.7 8.5 8.5 0 1 0 20.5 14.5Z"/><path d="m17 5 .6 1.4L19 7l-1.4.6L17 9l-.6-1.4L15 7l1.4-.6L17 5Z"/></svg></span><span><span class="time-name">Switch off</span><span id="offCaption" class="time-caption">6:40 AM</span></span></span>
+              <input id="offTime" class="time-input" type="time" value="06:40" aria-label="Switch off time">
+            </label>
+          </div>
+          <div class="schedule-foot"><div id="scheduleNote" class="schedule-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Runs on India Standard Time (UTC+5:30)</span></div><button id="saveSchedule" class="save-button" type="button">Save times</button></div>
+        </section>
+
+        <section class="glass-card history-card">
+          <div class="card-heading">
+            <div class="history-title-wrap"><span class="history-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.4L3 8"/><path d="M3 3v5h5m4-1v5l3 2"/></svg></span><div><h2 class="card-title">Recent activity</h2><div class="card-subtitle">The latest changes to your light</div></div></div>
+          </div>
+          <div id="historyList" class="history-list"><div class="empty-history">Activity will appear here.</div></div>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="footer-row"><span>Nova Light · Local control, right at home</span><span>Device time zone: Asia/Kolkata</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+      const $ = (id) => document.getElementById(id);
+      const refs = {
+        body: document.body, hero: $("heroCard"), power: $("powerButton"), control: $("controlWrap"),
+        relay: $("relayState"), relayDot: $("relayStateDot"), title: $("heroTitle"), description: $("heroDescription"),
+        powerLabel: $("powerLabel"), connectionDot: $("connectionDot"), connection: $("connectionText"),
+        clock: $("clockValue"), date: $("dateValue"), usage: $("usageValue"), wifi: $("wifiValue"), wifiSub: $("wifiSub"),
+        schedule: $("scheduleCard"), scheduleToggle: $("scheduleToggle"), onTime: $("onTime"), offTime: $("offTime"),
+        onCaption: $("onCaption"), offCaption: $("offCaption"), scheduleNote: $("scheduleNote"), history: $("historyList"), toast: $("toast")
+      };
+      let state = null;
+      let busy = false;
+      let toastTimer = null;
+
+      function setTheme(theme) {
+        refs.body.dataset.theme = theme;
+        localStorage.setItem("nova-theme", theme);
+        const meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.content = theme === "dark" ? "#111a27" : "#eef3fb";
+        $("themeIcon").innerHTML = theme === "dark"
+          ? '<path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.7 8.5 8.5 0 1 0 20.5 14.5Z"/><path d="m17 5 .6 1.4L19 7l-1.4.6L17 5Z"/>'
+          : '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/>';
+      }
+      const savedTheme = localStorage.getItem("nova-theme");
+      setTheme(savedTheme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+      $("themeButton").addEventListener("click", () => setTheme(refs.body.dataset.theme === "dark" ? "light" : "dark"));
+
+      function showToast(message) {
+        refs.toast.textContent = message;
+        refs.toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => refs.toast.classList.remove("show"), 2600);
+      }
+      function formatTime(value) {
+        if (!value || !/^\d{2}:\d{2}$/.test(value)) return "—";
+        const [h, m] = value.split(":").map(Number);
+        const suffix = h >= 12 ? "PM" : "AM";
+        return `${(h % 12) || 12}:${String(m).padStart(2, "0")} ${suffix}`;
+      }
+      function toInputTime(minutes) {
+        const h = Math.floor(minutes / 60), m = minutes % 60;
+        return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+      }
+      function minutesFromInput(value) {
+        if (!/^\d{2}:\d{2}$/.test(value)) return -1;
+        const [h, m] = value.split(":").map(Number);
+        return h <= 23 && m <= 59 ? h * 60 + m : -1;
+      }
+      function updateTimeCaptions() {
+        refs.onCaption.textContent = formatTime(refs.onTime.value);
+        refs.offCaption.textContent = formatTime(refs.offTime.value);
+      }
+      refs.onTime.addEventListener("input", updateTimeCaptions);
+      refs.offTime.addEventListener("input", updateTimeCaptions);
+
+      async function request(path, options = {}) {
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 4500);
+        let response;
+        try {
+          response = await fetch(path, { cache: "no-store", ...options, signal: controller.signal, headers: { "Content-Type": "application/json", ...(options.headers || {}) } });
+        } finally { clearTimeout(timeout); }
+        let data;
+        try { data = await response.json(); } catch (_) { throw new Error("The device returned an unreadable response."); }
+        if (!response.ok || data.ok === false) throw new Error(data.error || `Request failed (${response.status})`);
+        return data;
+      }
+      function setConnection(online, connected) {
+        refs.connectionDot.classList.toggle("online", online && connected);
+        refs.connection.textContent = !online ? "No response" : (connected ? "Online" : "Wi-Fi offline");
+      }
+      function renderClock(data) {
+        refs.clock.textContent = data.timeText || "Not synced";
+        refs.date.textContent = data.dateText || "Waiting for device clock";
+        refs.clock.title = data.timeSynced ? "Asia/Kolkata" : "NTP time is not available";
+      }
+      function renderHistory(items) {
+        if (!Array.isArray(items) || items.length === 0) {
+          refs.history.innerHTML = '<div class="empty-history">Activity will appear here.</div>';
+          return;
+        }
+        refs.history.innerHTML = items.map((item) => {
+          const isOn = String(item.label || "").toLowerCase().includes("on");
+          const icon = isOn ? '<path d="M12 2v10"/><path d="M6.2 5.8a8 8 0 1 0 11.6 0"/>' : '<path d="M7 7l10 10M17 7 7 17"/>';
+          const label = escapeHtml(item.label || "Light updated");
+          const when = escapeHtml(item.time || "Time unavailable");
+          return `<div class="history-item"><span class="history-mark ${isOn ? "" : "off"}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">${icon}</svg></span><span class="history-action">${label}</span><time class="history-time">${when}</time></div>`;
+        }).join("");
+      }
+      function escapeHtml(text) {
+        return String(text).replace(/[&<>"']/g, (ch) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch]));
+      }
+      function render(data) {
+        state = data;
+        setConnection(true, Boolean(data.wifiConnected));
+        const on = Boolean(data.relayOn);
+        refs.control.classList.toggle("light-on", on);
+        refs.relay.textContent = on ? "ON" : "OFF";
+        refs.relayDot.classList.toggle("on", on);
+        refs.power.setAttribute("aria-pressed", String(on));
+        refs.power.setAttribute("aria-label", on ? "Turn light off" : "Turn light on");
+        refs.title.textContent = on ? "A room full of warmth." : "A little more glow.";
+        refs.description.textContent = on ? "Your light is on. Settle into the moment." : "Your light is ready when you are. Tap the control to change its state.";
+        refs.powerLabel.textContent = on ? "Tap to turn off" : "Tap to turn on";
+        refs.scheduleToggle.setAttribute("aria-checked", String(Boolean(data.scheduleEnabled)));
+        refs.scheduleToggle.setAttribute("aria-label", data.scheduleEnabled ? "Disable automatic schedule" : "Enable automatic schedule");
+        refs.schedule.classList.toggle("schedule-off", !data.scheduleEnabled);
+        if (document.activeElement !== refs.onTime) refs.onTime.value = toInputTime(Number(data.onMinute) || 0);
+        if (document.activeElement !== refs.offTime) refs.offTime.value = toInputTime(Number(data.offMinute) || 0);
+        updateTimeCaptions();
+        if (data.scheduleEnabled && !data.timeSynced) {
+          refs.scheduleNote.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Waiting for NTP time sync before running</span>';
+        } else {
+          refs.scheduleNote.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Runs on India Standard Time (UTC+5:30)</span>';
+        }
+        const seconds = Math.max(0, Number(data.dailyUsageSeconds) || 0);
+        const hours = Math.floor(seconds / 3600), mins = Math.floor((seconds % 3600) / 60);
+        refs.usage.textContent = hours ? `${hours}h ${mins}m` : `${mins} min`;
+        refs.wifi.textContent = Number.isFinite(Number(data.rssi)) && data.wifiConnected ? `${data.rssi} dBm` : "— dBm";
+        refs.wifiSub.textContent = data.wifiConnected ? (data.ipAddress || "Wi-Fi connected") : "ESP32 is reconnecting";
+        renderClock(data);
+        renderHistory(data.history);
+      }
+      async function poll() {
+        if (busy) return;
+        busy = true;
+        try { render(await request("/api/state")); }
+        catch (_) { setConnection(false, false); }
+        finally { busy = false; }
+      }
+      async function controlLight() {
+        if (busy) return;
+        busy = true;
+        refs.power.disabled = true;
+        try {
+          const next = !(state && state.relayOn);
+          const data = await request("/api/control", { method: "POST", body: JSON.stringify({ on: next }) });
+          render(data);
+          showToast(next ? "Light switched on" : "Light switched off");
+        } catch (error) { showToast(error.message || "Could not reach the ESP32"); }
+        finally { refs.power.disabled = false; busy = false; }
+      }
+      async function saveSettings(enabled) {
+        const onMinute = minutesFromInput(refs.onTime.value);
+        const offMinute = minutesFromInput(refs.offTime.value);
+        if (onMinute < 0 || offMinute < 0) { showToast("Choose valid on and off times."); return; }
+        if (enabled && onMinute === offMinute) { showToast("Choose different on and off times for the schedule."); return; }
+        try {
+          const data = await request("/api/settings", { method: "POST", body: JSON.stringify({ scheduleEnabled: enabled, onMinute, offMinute }) });
+          render(data);
+          showToast("Schedule saved on this ESP32");
+        } catch (error) { showToast(error.message || "Could not save schedule"); }
+      }
+      refs.power.addEventListener("click", controlLight);
+      refs.scheduleToggle.addEventListener("click", () => saveSettings(!(state && state.scheduleEnabled)));
+      $("saveSchedule").addEventListener("click", () => saveSettings(Boolean(state && state.scheduleEnabled)));
+      updateTimeCaptions();
+      poll();
+      setInterval(poll, 2500);
+    })();
+  </script>
+</body>
+</html>
+
+)NOVALIGHT_HTML";
+

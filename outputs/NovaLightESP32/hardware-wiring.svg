@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Nova Light ESP32 and single channel relay wiring</title>
+  <desc id="desc">Low voltage control wiring between an ESP32 DevKit V1 and a 5 volt relay module. GPIO 25 connects to IN, grounds are shared, and a suitable 5 volt supply connects to relay VCC.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1"><stop stop-color="#f7f9fd"/><stop offset="1" stop-color="#eaf0f9"/></linearGradient>
+    <linearGradient id="board" x2="1" y2="1"><stop stop-color="#25354b"/><stop offset="1" stop-color="#162435"/></linearGradient>
+    <linearGradient id="relay" x2="1" y2="1"><stop stop-color="#2fa86e"/><stop offset="1" stop-color="#19754b"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#50617d" flood-opacity=".14"/></filter>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#4c7df2"/></marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#e65959"/></marker>
+    <marker id="arrowBlack" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#273449"/></marker>
+    <style>
+      text{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#1b293c}.small{font-size:14px;fill:#647187}.label{font-size:15px;font-weight:700}.pin{font-size:14px;font-weight:700;fill:#f6f8fd}.title{font-size:29px;font-weight:750;letter-spacing:-1px}.subtitle{font-size:15px;fill:#627087}
+    </style>
+  </defs>
+  <rect width="1200" height="700" rx="32" fill="url(#bg)"/>
+  <text x="58" y="68" class="title">Nova Light · low voltage control wiring</text>
+  <text x="60" y="98" class="subtitle">ESP32-WROOM-32 DevKit V1 + 5V single-channel relay module</text>
+
+  <!-- ESP32 DevKit V1 -->
+  <g filter="url(#shadow)">
+    <rect x="105" y="153" width="330" height="397" rx="26" fill="url(#board)"/>
+    <rect x="207" y="179" width="126" height="58" rx="10" fill="#a8b6c9"/>
+    <rect x="220" y="189" width="100" height="37" rx="5" fill="#d9e1eb"/>
+    <text x="270" y="255" text-anchor="middle" fill="#ced7e4" font-size="12" font-weight="700">ESP32-WROOM-32</text>
+    <rect x="234" y="467" width="74" height="41" rx="9" fill="#8795a8"/>
+    <rect x="251" y="480" width="41" height="16" rx="4" fill="#34445b"/>
+    <circle cx="131" cy="182" r="5" fill="#718199"/><circle cx="409" cy="182" r="5" fill="#718199"/>
+    <circle cx="131" cy="521" r="5" fill="#718199"/><circle cx="409" cy="521" r="5" fill="#718199"/>
+    <text x="270" y="432" text-anchor="middle" fill="#d7dfeb" font-size="14" font-weight="700">ESP32 DEVKIT V1</text>
+    <rect x="415" y="282" width="29" height="28" rx="5" fill="#d9e3ef"/><text x="429" y="301" text-anchor="middle" fill="#273449" font-size="10" font-weight="700">25</text>
+    <rect x="415" y="346" width="29" height="28" rx="5" fill="#d9e3ef"/><text x="429" y="365" text-anchor="middle" fill="#273449" font-size="10" font-weight="700">G</text>
+  </g>
+  <text x="270" y="586" text-anchor="middle" class="label">USB powers the ESP32</text>
+  <text x="270" y="610" text-anchor="middle" class="small">GPIO 25 = relay signal · GND = common reference</text>
+
+  <!-- Relay board -->
+  <g filter="url(#shadow)">
+    <rect x="736" y="183" width="310" height="320" rx="25" fill="url(#relay)"/>
+    <rect x="793" y="225" width="197" height="128" rx="15" fill="#1b2830" stroke="#9bb39f" stroke-width="2"/>
+    <text x="891" y="282" text-anchor="middle" fill="#e4eee7" font-size="19" font-weight="750">5V RELAY</text>
+    <text x="891" y="310" text-anchor="middle" fill="#b4c5b9" font-size="13">single channel</text>
+    <circle cx="1010" cy="208" r="8" fill="#e5c854"/>
+    <rect x="781" y="398" width="210" height="47" rx="8" fill="#b4a76a"/>
+    <circle cx="810" cy="422" r="11" fill="#3b403b"/><circle cx="886" cy="422" r="11" fill="#3b403b"/><circle cx="962" cy="422" r="11" fill="#3b403b"/>
+    <text x="810" y="468" text-anchor="middle" fill="#f4f5ef" font-size="12" font-weight="700">VCC</text>
+    <text x="886" y="468" text-anchor="middle" fill="#f4f5ef" font-size="12" font-weight="700">GND</text>
+    <text x="962" y="468" text-anchor="middle" fill="#f4f5ef" font-size="12" font-weight="700">IN</text>
+    <rect x="1015" y="317" width="62" height="109" rx="9" fill="#d6c87e"/>
+    <circle cx="1030" cy="338" r="7" fill="#303b3a"/><circle cx="1030" cy="370" r="7" fill="#303b3a"/><circle cx="1030" cy="402" r="7" fill="#303b3a"/>
+    <text x="1091" y="343" class="small">NO</text><text x="1091" y="375" class="small">COM</text><text x="1091" y="407" class="small">NC</text>
+  </g>
+  <text x="891" y="548" text-anchor="middle" class="label">Relay control input side</text>
+  <text x="891" y="571" text-anchor="middle" class="small">Check the exact module pin labels</text>
+
+  <!-- GPIO signal -->
+  <path d="M444 296 H674 V422 H793" fill="none" stroke="#4c7df2" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <rect x="523" y="275" width="116" height="32" rx="16" fill="#edf2ff" stroke="#cbd8fa"/>
+  <text x="581" y="296" text-anchor="middle" class="label" fill="#3f70e8">GPIO 25 → IN</text>
+  <!-- common ground -->
+  <path d="M444 360 H646 V422 H886" fill="none" stroke="#273449" stroke-width="5" marker-end="url(#arrowBlack)"/>
+  <rect x="532" y="338" width="100" height="31" rx="15" fill="#f2f4f8" stroke="#d5dce6"/>
+  <text x="582" y="359" text-anchor="middle" class="label">GND → GND</text>
+  <!-- 5V supply -->
+  <g filter="url(#shadow)">
+    <rect x="680" y="90" width="205" height="64" rx="18" fill="#fff" stroke="#e0e6ef"/>
+    <text x="782" y="117" text-anchor="middle" class="label">Regulated 5V supply</text>
+    <text x="782" y="138" text-anchor="middle" class="small">for relay VCC, if required</text>
+  </g>
+  <path d="M811 154 V174 H810 V398" fill="none" stroke="#e65959" stroke-width="5" marker-end="url(#arrowRed)"/>
+  <rect x="831" y="160" width="105" height="31" rx="15" fill="#fff0ee" stroke="#f1c7c1"/>
+  <text x="883" y="181" text-anchor="middle" class="label" fill="#cf4c4c">5V → VCC</text>
+
+  <!-- Safety and compatibility notes -->
+  <rect x="58" y="640" width="1084" height="1" fill="#d4dce8"/>
+  <text x="60" y="667" font-size="13" font-weight="650" fill="#607087">Use 3.3V-compatible IN logic. Keep ESP32 GPIOs off 5V. Follow your relay board’s VCC/JD-VCC and isolation documentation.</text>
+</svg>
+
